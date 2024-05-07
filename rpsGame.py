@@ -1,62 +1,54 @@
-import random,sys
+import random, sys
 
-print('ROCK, PAPER, SCISSORS')
+print('<--- ROCK, PAPER, SCISSORS --->')
 
-# These variables keep track of the number of wins, losses and ties
 wins = 0
 losses = 0
 ties = 0
 
-# The main game loop
 while True:
-  print('%s Wins, %s Losses, %s Ties' % (wins, losses, ties))
+    print('%s Wins | %s Losses | %s Ties' % (wins, losses, ties))
 
-  # The player input loop
-  while True:
-    print('Enter your move: (r)ock (p)aper (s)cissors or (q)uit')
+    while True:
+        playerMove = input('> Enter (r)ock, (p)aper, (s)cissors or (q)uit: ')
 
-    playerMove = input()
+        if playerMove == 'q':
+            sys.exit()
 
-    if playerMove == 'q':
-      sys.exit()
-    
-    if playerMove == 'r' or playerMove == 'p' or playerMove == 's':
-      break;
-    
-    print('Type one of r, p s or q.')
+        if playerMove == 'r' or \
+            playerMove == 'p' or \
+            playerMove == 's':
+            break
 
-  # Display what the player chose:
-  if playerMove == 'r':
-    print('ROCK versus...')
-  elif playerMove == 'p':
-    print('PAPER versus...')
-  elif playerMove == 's':
-    print('SCISSORS versus...')
+        print('Please, type only the letters in parentheses...')
 
-  # Display what the computer chose:
-  randomNumber = random.randint(1, 3)
+    if playerMove == 'r':
+        print('ROCK versus...')
+    elif playerMove == 'p':
+        print('PAPER versus...')
+    elif playerMove == 's':
+        print('SCISSORS versus...')
 
-  if randomNumber == 1:
-    computerMove = 'r'
-    print('ROCK')
-  elif randomNumber == 2:
-    computerMove = 'p'
-    print('PAPER')
-  elif randomNumber == 3:
-    computerMove = 's'
-    print('SCISSORS')
+    randomNumber = random.randint(1, 3)
 
-  # Display and record the win/loss/tie
-  if playerMove == computerMove:
-    print('It is a tie!')
-    ties = ties + 1
-  elif (playerMove == 'r' and computerMove == 's') or \
-       (playerMove == 'p' and computerMove == 'r') or \
-       (playerMove == 's' and computerMove == 'p'):       
-    print('You win!')
-    wins = wins + 1
-  elif (playerMove == 'r' and computerMove == 'p') or \
-       (playerMove == 'p' and computerMove == 's') or \
-       (playerMove == 's' and computerMove == 'r'):
-    print('You lose!')
-    losses = losses + 1
+    if randomNumber == 1:
+        computerMove = 'r'
+        print('ROCK')
+    elif randomNumber == 2:
+        computerMove = 'p'
+        print('PAPER')
+    elif randomNumber == 3:
+        computerMove = 's'
+        print('SCISSORS')
+
+    if playerMove == computerMove:
+        print('It is a tie!')
+        ties += 1
+    elif (playerMove == 'r' and computerMove == 's') or \
+         (playerMove == 'p' and computerMove == 'r') or \
+         (playerMove == 's' and computerMove == 'p'):
+        print('You win!')
+        wins += 1
+    else:
+        print('You lose!')
+        losses += 1
